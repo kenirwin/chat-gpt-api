@@ -18,7 +18,7 @@
                 var poemTypeName = $('#poemType option:selected').text();
                 var locationName = $('#location option:selected').text();
                 $('#weather').addClass('placeholder');
-                $('#poem').html('Loading...').addClass('placeholder');
+                $('#poem').html('Loading...').addClass('placeholder').removeClass('d-none');
                 $.ajax({
                     url: './weather',
                     type: 'GET',
@@ -30,7 +30,7 @@
                     success: function(data) {
                         let weather = data.weather.replaceAll('. ','<br>');
                         let weatherHeader = `<h2>Weather for ${locationName}</h2>`;
-                        $('#weather').html(weatherHeader + weather).removeClass('placeholder');
+                        $('#weather').html(weatherHeader + weather).removeClass('placeholder').removeClass('d-none');
                         let poem = data.poem.replaceAll('\n', '<br>');
                         let poemHeader = `<h2>${poemTypeName} for ${locationName}</h2>`;
                         $('#poem').html(poemHeader + poem).removeClass('placeholder');
@@ -81,8 +81,8 @@
         </div>
         </form>
         <div class="row">
-            <div class="col-md-6 mb-4 p-3 bg-info-subtle" id="poem"></div>
-            <div class="col-md-4 mb-5 p-3 offset-md-1 bg-secondary text-white" id="weather"></div>
+            <div class="col-md-6 d-none mb-4 p-3 bg-info-subtle" id="poem"></div>
+            <div class="col-md-4 d-none mb-5 p-3 offset-md-1 bg-secondary text-white" id="weather"></div>
         </div>
     </main>
 
