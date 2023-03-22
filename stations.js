@@ -41,6 +41,47 @@ export default [
     },
   },
   {
+    id: '71868',
+    name: {
+      en: 'Hudson Bay, Canada',
+    },
+    country: 'CA',
+    region: 'SK',
+    identifiers: {
+      national: '46367',
+      wmo: '71868',
+      icao: 'CYHB',
+    },
+    location: {
+      latitude: 52.82,
+      longitude: -102.32,
+      elevation: 358,
+    },
+    timezone: 'America/Regina',
+    inventory: {
+      model: {
+        start: '2021-01-01',
+        end: '2023-03-30',
+      },
+      hourly: {
+        start: '1943-03-19',
+        end: '2023-02-27',
+      },
+      daily: {
+        start: '1943-03-19',
+        end: '2023-03-15',
+      },
+      monthly: {
+        start: 1943,
+        end: 2022,
+      },
+      normals: {
+        start: 1961,
+        end: 2020,
+      },
+    },
+  },
+  {
     id: '33345',
     name: {
       en: 'Kyiv, Ukraine',
@@ -78,47 +119,6 @@ export default [
       normals: {
         start: 1961,
         end: 2020,
-      },
-    },
-  },
-  {
-    id: 'HKRE0',
-    name: {
-      en: 'Nairobi, Kenya',
-    },
-    country: 'KE',
-    region: 'NA',
-    identifiers: {
-      national: null,
-      wmo: null,
-      icao: 'HKRE',
-    },
-    location: {
-      latitude: -1.2773,
-      longitude: 36.8623,
-      elevation: 1626,
-    },
-    timezone: 'Africa/Nairobi',
-    inventory: {
-      model: {
-        start: null,
-        end: null,
-      },
-      hourly: {
-        start: '2001-07-29',
-        end: '2017-07-27',
-      },
-      daily: {
-        start: '2011-07-05',
-        end: '2015-06-13',
-      },
-      monthly: {
-        start: null,
-        end: null,
-      },
-      normals: {
-        start: 1961,
-        end: 1990,
       },
     },
   },
@@ -197,6 +197,47 @@ export default [
       monthly: {
         start: 1979,
         end: 2022,
+      },
+      normals: {
+        start: 1961,
+        end: 1990,
+      },
+    },
+  },
+  {
+    id: '93890',
+    name: {
+      en: 'Dunedin Aerodrome, New Zealand',
+    },
+    country: 'NZ',
+    region: 'OTA',
+    identifiers: {
+      national: null,
+      wmo: '93890',
+      icao: 'NZDN',
+    },
+    location: {
+      latitude: -45.9333,
+      longitude: 170.2,
+      elevation: 1,
+    },
+    timezone: 'Pacific/Auckland',
+    inventory: {
+      model: {
+        start: '2018-01-28',
+        end: '2023-03-31',
+      },
+      hourly: {
+        start: null,
+        end: null,
+      },
+      daily: {
+        start: null,
+        end: null,
+      },
+      monthly: {
+        start: null,
+        end: null,
       },
       normals: {
         start: 1961,

@@ -58,6 +58,7 @@ export default class WeatherAPI {
       wpgt: 'peak wind gust in km/h',
       pres: 'average sea-level air pressure in hPa',
       tsun: 'daily sunshine total in minutes',
+      hemisphere: 'hemisphere',
     };
     let text = '';
     for (const [key, value] of Object.entries(data)) {

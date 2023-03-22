@@ -24,7 +24,8 @@
                     type: 'GET',
                     data: {
                         location: location,
-                        poemType: poemType
+                        poemType: poemType,
+                        hemisphere: $('#location option:selected').data('hemisphere')
                     },
                     success: function(data) {
                         let weather = data.weather.replaceAll('. ','<br>');
@@ -52,9 +53,10 @@
             <div class="col-md-3">
                 <label for="location">Location</label><br>
                 <select class="form-select" name="location" id="location">
-                    <% stations.forEach((stn) => {
-                        %>
-                        <option value="<%= stn.id %>"><%= stn.name.en %></option>
+                    <% stations.forEach((stn) => { %>
+                        <% let hemisphere = 'Northern'; %>
+                        <% if (stn.location.latitude < 0) { hemisphere = 'Southern' } %>
+                        <option value="<%= stn.id %>" data-hemisphere="<%= hemisphere %> hemisphere"><%= stn.name.en %></option>
                         <%
                     });
                     %>
@@ -84,7 +86,7 @@
         </div>
     </div>
 
-    <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
+    <footer class="bd-footer py-4 py-md-5 fixed-bottom bg-body-tertiary">
         <div class="container">
             <h2>Credits</h2>
             

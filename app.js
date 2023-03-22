@@ -8,16 +8,19 @@ const weatherAPI = new WeatherAPI();
 import Chat from './models/Chat.js';
 const chat = new Chat();
 import dayjs from 'dayjs';
+import allStations from './allStations.js';
+import countries from './data/countryCodes.js';
 
 app.get('/', (req, res) => {
   // load file from views folder
-  res.render('index.ejs', { stations: stations });
+  let mystations = stations.sort((a, b) => a.name.en.localeCompare(b.name.en));
+  res.render('index.ejs', { stations: mystations });
 });
 
 app.get('/weather', async (req, res) => {
   console.log('Weather request', req.query);
   let response = await getWeatherAndPoem(req);
-  console.log(response);
+  //   console.log(response);
   //   let response = {
   //     poem: req.query.poemType + ' goes here',
   //     weather: 'weather for ' + req.query.location + ' goes here',
@@ -25,6 +28,13 @@ app.get('/weather', async (req, res) => {
   res.json(response);
 });
 
+app.get('/stations', (req, res) => {
+  let stations = allStations
+    .filter((station) => (station.inventory.hourly.end = '2023-03-21'))
+    .sort((a, b) => a.country.localeCompare(b.country));
+  res.render('stations.ejs', { stations, countries });
+  //   res.json(stations);
+});
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
@@ -38,6 +48,10 @@ async function getWeatherAndPoem(req) {
     end: today,
   };
   let weather = await weatherAPI.GetDailyWeather(params);
+  if (weather.data.length === 0) {
+    return { poem: 'No weather data for this location', weather: '' };
+  }
+  weather.data[0].hemisphere = req.query.hemisphere;
   let weatherStr = weatherAPI.convertDataToText(weather.data[0]);
   console.log(weatherStr);
   let weatherReq =
