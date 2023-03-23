@@ -35,6 +35,9 @@ app.get('/stations', (req, res) => {
   //   res.json(stations);
 });
 
+app.get('/admin', (req, res) => {
+  res.render('admin.ejs');
+});
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });

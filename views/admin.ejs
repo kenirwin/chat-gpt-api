@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Links</title>
+    <!-- add jquery and bootstrap 5-->
+    <%- include('partials/jq-bootstrap') %>
+
+
+</head>
+<body class="container">
+    <h1>Admin Links</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Service</th>
+                <th scope="col">Documentation</th>
+                <th scope="col">Usage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ChatGPT</td>
+                <td><a href="https://platform.openai.com/docs/guides/chat">Documentation</a></td>
+                <td><a href="https://platform.openai.com/account/usage">Usage</a></td>
+            </tr>
+            <tr>
+                <td>WeatherAPI</td>
+                <td><a href="">Documentation</a></td>
+                <td><a href="https://rapidapi.com/developer/billing/subscriptions-and-usage">Usage</a></td>
+            </tr>
+            <tr>
+                <td>Meteostat Weather</td>
+                <td><a href="https://dev.meteostat.net/api/">Documentation</a></td>
+                <td><a href="">Usage</a></td>
+            </tr>
+ 
+    </table>
+</body>
+</html>
