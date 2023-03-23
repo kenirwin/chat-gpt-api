@@ -2,7 +2,8 @@
 import express from 'express';
 const app = express();
 const port = 3000;
-import stations from './stations.js';
+import stations from './data/weatherApiStations.js';
+// import stations from './stations.js'; // Meteostat Locations
 // import WeatherAPI from './models/MeteostatWeather.js';
 import WeatherAPI from './models/WeatherApi.js';
 const weatherAPI = new WeatherAPI();
@@ -14,8 +15,9 @@ import countries from './data/countryCodes.js';
 
 app.get('/', (req, res) => {
   // load file from views folder
-  let myStations = stations.sort((a, b) => a.name.en.localeCompare(b.name.en));
-  res.render('weatherPoem.ejs', { stations: myStations });
+  // let myStations = stations.sort((a, b) => a.name.en.localeCompare(b.name.en));
+  let myStations = stations.sort();
+  res.render('weatherPoem.ejs', { stations });
 });
 
 app.get('/weather', async (req, res) => {
