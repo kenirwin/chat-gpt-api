@@ -55,12 +55,14 @@ async function getWeatherAndPoem(req) {
   let weatherStr = weatherAPI.convertDataToText(weather.data[0]);
   console.log(weatherStr);
   let weatherReq =
-    'Think about the weather conditions given these data' +
+    'Think about the weather conditions given these data: ' +
     weatherStr +
     ' Write a ' +
     req.query.poemType +
-    ' about the weather. Do not refer to the numbers.';
-  //   console.log(weatherReq);
+    ' about the weather in ' +
+    req.query.locationName +
+    '. Do not refer to the numbers.';
+  console.log(weatherReq);
   // convert weather data to human readable text string
   let poem = await chat.getResponse(weatherReq);
   return { poem: poem, weather: weatherStr };
