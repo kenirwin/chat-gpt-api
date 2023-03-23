@@ -13,18 +13,14 @@ import countries from './data/countryCodes.js';
 
 app.get('/', (req, res) => {
   // load file from views folder
-  let mystations = stations.sort((a, b) => a.name.en.localeCompare(b.name.en));
-  res.render('index.ejs', { stations: mystations });
+  let myStations = stations.sort((a, b) => a.name.en.localeCompare(b.name.en));
+  res.render('weatherPoem.ejs', { stations: myStations });
 });
 
 app.get('/weather', async (req, res) => {
   console.log('Weather request', req.query);
   let response = await getWeatherAndPoem(req);
   //   console.log(response);
-  //   let response = {
-  //     poem: req.query.poemType + ' goes here',
-  //     weather: 'weather for ' + req.query.location + ' goes here',
-  //   };
   res.json(response);
 });
 
@@ -35,6 +31,7 @@ app.get('/stations', (req, res) => {
   res.render('stations.ejs', { stations, countries });
   //   res.json(stations);
 });
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
