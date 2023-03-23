@@ -2,7 +2,7 @@ import { config } from 'dotenv';
 config();
 import axios from 'axios';
 
-export default class WeatherAPI {
+export default class MeteostatWeather {
   constructor() {
     this.key = process.env.X_RapidAPI_Key;
     this.host = process.env.X_RapidAPI_Host;

@@ -3,7 +3,7 @@ import express from 'express';
 const app = express();
 const port = 3000;
 import stations from './stations.js';
-import WeatherAPI from './models/Weather.js';
+import WeatherAPI from './models/MeteostatWeather.js';
 const weatherAPI = new WeatherAPI();
 import Chat from './models/Chat.js';
 const chat = new Chat();
