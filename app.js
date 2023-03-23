@@ -3,7 +3,8 @@ import express from 'express';
 const app = express();
 const port = 3000;
 import stations from './stations.js';
-import WeatherAPI from './models/MeteostatWeather.js';
+// import WeatherAPI from './models/MeteostatWeather.js';
+import WeatherAPI from './models/WeatherApi.js';
 const weatherAPI = new WeatherAPI();
 import Chat from './models/Chat.js';
 const chat = new Chat();
@@ -41,15 +42,17 @@ async function getWeatherAndPoem(req) {
   let today = dayjs().format('YYYY-MM-DD');
   const params = {
     station: req.query.location,
+    locationName: req.query.locationName,
     start: today,
     end: today,
   };
-  let weather = await weatherAPI.GetDailyWeather(params);
-  if (weather.data.length === 0) {
-    return { poem: 'No weather data for this location', weather: '' };
-  }
-  weather.data[0].hemisphere = req.query.hemisphere;
-  let weatherStr = weatherAPI.convertDataToText(weather.data[0]);
+  let weather = await weatherAPI.getDailyWeather(params);
+  // if (weather.data.length === 0) {
+  //   return { poem: 'No weather data for this location', weather: '' };
+  // }
+  // weather.data[0].hemisphere = req.query.hemisphere;
+  // let weatherStr = weatherAPI.convertDataToText(weather.data[0]);
+  let weatherStr = weatherAPI.convertDataToText(weather);
   console.log(weatherStr);
   let weatherReq =
     'Think about the weather conditions given these data: ' +

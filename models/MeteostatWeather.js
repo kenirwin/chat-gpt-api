@@ -45,7 +45,8 @@ export default class MeteostatWeather {
     return result;
   }
 
-  convertDataToText(data) {
+  ConvertDataToText(input) {
+    let data = input.data[0];
     const labels = {
       date: 'date',
       tavg: 'average temperature in °C',
